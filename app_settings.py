@@ -8,6 +8,7 @@ db = operate.OperateDatabase()
 cnx = db.connect()
 
 
+# ウィンドウの設定
 class MainFrame(wx.Frame):
     def __init__(self, parent, title):
         super().__init__(parent, title=title, size=(600, 600))
@@ -27,6 +28,8 @@ class MainFrame(wx.Frame):
         self.SetStatusBar(msg)
 
 
+# タブごとにクラス分け
+# 入力タブ
 class ImportSQL(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent)
@@ -40,6 +43,7 @@ class ImportSQL(wx.Panel):
 
         self.SetSizer(layout)
 
+    # 実行ボタン
     def OnExecButton(self, event):
         cur = cnx.cursor()
         cur.execute("use test;")
@@ -54,6 +58,7 @@ class ImportSQL(wx.Panel):
             [text_sql, exec_time, dt_now.strftime('%Y/%m/%d %H:%M:%S')])
 
 
+# 　出力タブ
 class Show_Result(wx.Panel, listmix.ListCtrlAutoWidthMixin):
     def __init__(self, parent, list_result):
         super().__init__(parent)
@@ -68,6 +73,7 @@ class Show_Result(wx.Panel, listmix.ListCtrlAutoWidthMixin):
         self.SetSizer(layout)
         self.Show
 
+    # 実行結果
     def Show(self):
         listmix.ListCtrlAutoWidthMixin.__init__(self)
         self.listctrl.DeleteAllItems()
