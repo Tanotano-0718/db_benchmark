@@ -25,7 +25,7 @@
 - 最低限の機能しかつけていないのでsqlの構文エラーに対する処理も未完成
 - 実行を押したときに何も表示されないので要修正
 
-## 出展
+## 参考
 
 - タブの実現
   - teratail <https://teratail.com/questions/288368?link=qa_related_sp>
